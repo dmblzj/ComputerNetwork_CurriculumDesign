@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c26a16a6-de1e-44c7-ac69-0cf268c3f5c2" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Computer Network Project Assignment.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/tcp_client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task1/tcp_server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/handshake.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/protocol.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/receiver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/sender.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/task2/stats.py" afterDir="false" />
-    </list>
+    <list default="true" id="c26a16a6-de1e-44c7-ac69-0cf268c3f5c2" name="更改" comment="第一版 缺少四次挥手" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,6 +57,19 @@
       <option name="presentableId" value="Default" />
       <updated>1781262444228</updated>
     </task>
+    <task id="LOCAL-00001" summary="第一版 缺少四次挥手">
+      <option name="closed" value="true" />
+      <created>1781325757019</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1781325757019</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="第一版 缺少四次挥手" />
+    <option name="LAST_COMMIT_MESSAGE" value="第一版 缺少四次挥手" />
   </component>
 </project>
