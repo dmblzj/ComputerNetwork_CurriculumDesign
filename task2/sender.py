@@ -75,14 +75,16 @@ class GBNSender:
         if not result:
             return
         _, _, seq, ack, flags, _, _ = result
-        if flags == proto.FLAG_ACK and ack > self.base:
-            rtt = self.rtt_stats.record_ack(self.base)
-            if rtt:
-                self.logger.info(f"收到 ACK: ack={ack}, RTT={rtt:.2f}ms")
-            self.base = ack
-            for s in list(self.packets.keys()):
-                if s < ack:
-                    del self.packets[s]
+        if flags == proto.FLAG_ACK:
+            if ack > self.base:
+                # 正常情况：滑动窗口
+                rtt = self.rtt_stats.record_ack(self.base)
+                self.base = ack
+                for s in list(self.packets.keys()):
+                    if s < ack:
+                        del self.packets[s]
+            elif ack == self.base:
+                pass
 
     def _retransmit_all(self):
         self.logger.warning(f"超时重传: base={self.base}, next={self.next_seq}")
