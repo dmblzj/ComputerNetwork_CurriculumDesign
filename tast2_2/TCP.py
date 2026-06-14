@@ -9,12 +9,13 @@ class TCP:
     HEADER_LENGTH = 14
 
     def __init__(self,seq=0, ack=0, flags=0, student_id=0, length=0, data=b''):
-        self.seq = seq
-        self.ack = ack
-        self.flags = flags
-        self.student_id = student_id
+        #seq(4)+ack(4)+flags(1)+student_id(2)+长度(2)+保留(1)=14字节
+        self.seq = seq #4
+        self.ack = ack #4
+        self.flags = flags #1
+        self.student_id = student_id #2
         self.data = data
-        self.length = len(data)
+        self.length = len(data) #2
 
 
     def tcp_encode(self):

@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c26a16a6-de1e-44c7-ac69-0cf268c3f5c2" name="更改" comment="自己开始重写">
-      <change afterPath="$PROJECT_DIR$/tast2_2/TCP.py" afterDir="false" />
+    <list default="true" id="c26a16a6-de1e-44c7-ac69-0cf268c3f5c2" name="更改" comment="基本完成">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tast2_2/TCP.py" beforeDir="false" afterPath="$PROJECT_DIR$/tast2_2/TCP.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tast2_2/udpclient.py" beforeDir="false" afterPath="$PROJECT_DIR$/tast2_2/udpclient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tast2_2/udpserver.py" beforeDir="false" afterPath="$PROJECT_DIR$/tast2_2/udpserver.py" afterDir="false" />
     </list>
@@ -25,18 +25,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "dmblzj"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dmblzj&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:dmblzj/ComputerNetwork_CurriculumDesign.git",
-    "accountId": "d04cfa8e-ea04-4f36-902b-e860f751afcd"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:dmblzj/ComputerNetwork_CurriculumDesign.git&quot;,
+    &quot;accountId&quot;: &quot;d04cfa8e-ea04-4f36-902b-e860f751afcd&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -48,18 +48,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.log.executor": "Run",
-    "Python.tcp_server.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.log.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tcp_server.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -99,13 +99,33 @@
       <option name="project" value="LOCAL" />
       <updated>1781336407974</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="基本完成">
+      <option name="closed" value="true" />
+      <created>1781409577972</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1781409577972</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="第一版 缺少四次挥手" />
     <MESSAGE value="第一版 缺少四次挥手，缺少多线程" />
     <MESSAGE value="自己开始重写" />
-    <option name="LAST_COMMIT_MESSAGE" value="自己开始重写" />
+    <MESSAGE value="基本完成" />
+    <option name="LAST_COMMIT_MESSAGE" value="基本完成" />
   </component>
 </project>

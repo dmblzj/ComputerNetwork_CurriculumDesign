@@ -50,13 +50,14 @@ def receive_thread(udp_socket):
         ack_pkt=TCP.tcp_decode(data)
 
         if ack_pkt and ack_pkt.flags==FLAG_ACK:
-            if ack_pkt.ack>base:
-                with lock:
+            with lock:
+                if ack_pkt.ack>base:
                     if base in send_times:
                         rtt = (time.time() - send_times[base]) * 1000
                         rtt_list.append(rtt)
                         logging.info(f"收到 ACK={ack_pkt.ack}, RTT={rtt:.2f}ms")
                     base=ack_pkt.ack
+                    #logging.info(f"base 已更新为 {base}")
 
 
 
@@ -90,6 +91,7 @@ def main():
 
                 hand3 = TCP(seq=hand2.ack, ack=hand2.seq + 1, flags=FLAG_ACK)
                 udp_client.sendto(hand3.tcp_encode(), addr)
+                logging.info(f"向服务端发送握手3 , seq={seq_sta+1}")
                 logging.info("三次握手完成，连接已建立")
                 data,_=udp_client.recvfrom(2048)
                 hand3_back=TCP.tcp_decode(data)
@@ -115,29 +117,13 @@ def main():
     next_seq = seq_sta + 1
 
     while base < seq_last:
+        repeat=False
         with lock:
-            # 1. 检查是否超时 (GBN 核心)
-            # 如果 base 对应的包还没确认，且当前时间超过了设定时间
-            if base in send_times and (time.time() - send_times[base] > time_lit):
-                logging.info(f"超时！回退N帧，从 seq={base} 开始重传")
 
-                # 重传所有未确认的包 (从 base 到 next_seq)
-                curr = base
-                while curr < next_seq:
-                    idx = (curr - (seq_sta + 1)) // 80  # 注意：这里确保索引计算正确
-                    if idx < len(packets):
-                        pkt = packets[idx]
-                        out_pkt = TCP(seq=pkt['seq'], flags=FLAG_DATA, data=pkt['data'])
-                        udp_client.sendto(out_pkt.tcp_encode(), addr)
-                        logging.info(f"【重传】第 {pkt['num']} 个包 (seq={curr})")
-                    curr += 80
+            if next_seq<base:
+                next_seq=base
 
-                # 重置 base 的计时器，防止重复触发
-                send_times[base] = time.time()
-                # next_seq 重置为 base，这样后续会重新发送窗口内的包
-                next_seq = base
-
-            # 2. 发送新包 (窗口未满且还有包没发)
+            # 正常发送窗口内的包
             if next_seq < base + window_size and (next_seq - (seq_sta + 1)) // 80 < 30:
                 idx = (next_seq - (seq_sta + 1)) // 80
                 pkt = packets[idx]
@@ -146,14 +132,39 @@ def main():
                 udp_client.sendto(out_pkt.tcp_encode(), addr)
                 total_sent_count += 1
 
-                # 记录首次发送时间
+
                 if next_seq not in send_times:
                     send_times[next_seq] = time.time()
 
                 logging.info(f"第 {pkt['num']} 个（第 {next_seq}~{next_seq + 79} 字节）client端已经发送")
                 next_seq += 80
 
-        time.sleep(0.01)  # 防止 CPU 占用过高
+            # 检查是否超时
+            if base in send_times and (time.time() - send_times[base] > time_lit):
+                logging.info(f"超时！回退N帧，从 seq={base} 开始重传")
+                repeat=True
+                # 重传所有未确认的包
+                curr = base
+                while curr < next_seq:
+                    idx = (curr - (seq_sta + 1)) // 80
+                    if idx < len(packets):
+                        pkt = packets[idx]
+                        out_pkt = TCP(seq=pkt['seq'], flags=FLAG_DATA, data=pkt['data'])
+                        udp_client.sendto(out_pkt.tcp_encode(), addr)
+                        total_sent_count+=1
+                        #重置计时器
+                        send_times[curr] = time.time()
+                        logging.info(f"重传 第 {pkt['num']} 个包 (seq={curr})")
+                    curr += 80
+                #更新next_seq
+                next_seq = base
+                #time.sleep(time_lit)
+
+
+        if repeat==True:
+            time.sleep(time_lit//2)
+
+        time.sleep(0.01)
 
     if rtt_list:
         df = pd.Series(rtt_list)
@@ -162,7 +173,7 @@ def main():
         print(f"最小 RTT: {df.min():.2f} ms")
         print(f"平均 RTT: {df.mean():.2f} ms")
         print(f"RTT 标准差: {df.std():.2f} ms")
-        loss_rate = (1 - 30 / total_sent_count) * 100 if total_sent_count > 0 else 0
+        loss_rate = ((total_sent_count - 30) / total_sent_count) * 100
         print(f"实际总发包数: {total_sent_count}")
         print(f"丢包率: {loss_rate:.2f}%")
 

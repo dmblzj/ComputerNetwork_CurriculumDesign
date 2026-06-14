@@ -15,15 +15,12 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(message)s',
     handlers=[
-        logging.FileHandler("udpserver.txt"),   # 写入文件
-        logging.StreamHandler()               # 输出到屏幕
+        logging.FileHandler("udpserver.txt"),
+        logging.StreamHandler()
     ]
 )
 
 #TCP (self,seq=0, ack=0, flags=0, student_id=0, length=0, data=b'')
-
-
-
 
 def main():
     parser = argparse.ArgumentParser(
@@ -68,7 +65,6 @@ def main():
             if random.random()<args.loss_rate:
                 logging.info(f"【模拟丢包】故意丢弃 seq={pkt.seq}")
                 continue
-
 
             if pkt.seq==expected_seq:
                 expected_seq=pkt.seq+80
