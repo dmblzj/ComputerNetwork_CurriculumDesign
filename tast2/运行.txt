@@ -1,0 +1,2 @@
+python udpserver.py 8888
+python udpclient.py 127.0.0.1 8888
