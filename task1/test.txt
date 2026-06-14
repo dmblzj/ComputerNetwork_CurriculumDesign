@@ -1,3 +1,14 @@
-Hello World
-This is a test file for TCP reverse task.
+The quick brown fox jumps over the lazy dog.
+TCP (Transmission Control Protocol) is one of the main protocols of the Internet protocol suite.
+It originated in the initial network implementation in which it complemented the Internet Protocol (IP).
+Therefore, the entire suite is commonly referred to as TCP/IP.
+Socket programming allows communication between two different processes on the same or different machines.
+In this project, we are building a custom application-layer protocol.
+We need to handle data fragmentation, packet types, and concurrency.
+The server must be able to reverse the string data sent by the client.
+This task is a great way to understand how network packets are structured, sent, and received over a reliable stream-oriented protocol.
+Testing this with different Lmin and Lmax values will reveal how random chunking works in practice.
+1234567890
 abcdefghijklmnopqrstuvwxyz
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+Everything seems to be working perfectly!
